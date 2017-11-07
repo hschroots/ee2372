@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 //This function swaps two pointers
 //At the end of this function, the left_ptr
 //will be pointing to what the right_ptr was pointing to
