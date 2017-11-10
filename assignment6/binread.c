@@ -37,9 +37,15 @@ int binread()
 			
 			if( num_read != 0 )
 				printreverse(float_data, num_data_vals);
+			
+			//free data
+			free(float_data);
 		}
 		else
-			printf("Unable to read file\n");	
+			printf("Unable to read file\n");
+		
+		//close file
+		fclose(data_file);	
 	}
 	else
 	{
@@ -74,6 +80,10 @@ int main(int argc, char ** argv)
 	data_file = NULL;
 	int err = binread();
 	if( err != 0 )
+	{
+		free(filename);
 		return 1;
+	}
+	free(filename);
 	return 0;	
 }
