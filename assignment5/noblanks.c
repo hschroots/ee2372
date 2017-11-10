@@ -4,7 +4,7 @@ const int MAX_CHARS = 4096; //4096 chars x 1 byte per char = 4KB!
 
 void noblanks(char * str)
 {
-	printf("The string before:\n");
+	printf("\nThe string before: ");
 	printf("%s\n", str);
 
 	char * iter = str;
@@ -21,7 +21,7 @@ void noblanks(char * str)
 	while( *iter != '\n')
 		*iter++ = '\n';	
 	
-	printf("The string after:\n");
+	printf("The string after: ");
 	printf("%s\n", str);
 	fflush(stdout);
 }
@@ -33,7 +33,7 @@ int main(void)
 	for( int i = 0; i < MAX_CHARS; i++ )
 		input[i] = '\n';
 
-	printf("Enter a string with spaces. Press Enter to quit-->\n");
+	printf("Enter a string with spaces. Press Enter twice to quit-->\n");
 	
 	while( scanf("%[^\n]%*c", input) ) {
 

@@ -14,7 +14,6 @@ double arrmin(double array[], int size)
 
 double arrmax(double array[], int size)
 {
-
 	double max_val = array[0];
 	for( int i = 1; i < size; i++ ) {
 		if( array[i] > max_val )
@@ -25,12 +24,10 @@ double arrmax(double array[], int size)
 
 double arraver(double array[], int size)
 {
-
 	double sum = 0;
 	for(int i=0; i < size; i++)
 		sum+=array[i];
 	return sum/(double)size;
-
 }
 
 void arrstats(double array[], int size)
@@ -39,9 +36,9 @@ void arrstats(double array[], int size)
 	double max_val = arrmax(array, size);
 	double avr_val = arraver(array, size);
 
-	printf("Array min: %lf\n", min_val);
-	printf("Array max: %lf\n", max_val);
-	printf("Array average: %lf\n", avr_val);
+	printf("Array min: %.3lf\n", min_val);
+	printf("Array max: %.3lf\n", max_val);
+	printf("Array average: %.3lf\n", avr_val);
 }
 
 void fillarray(double array[], int size)
@@ -54,9 +51,9 @@ void testarrstats()
 {
 	double test_array[10];
 
-	double expected_min = 0.0;
-	double expected_max = 9.0;
-	double expected_avr = 4.5;
+	double expected_min = 0.f;
+	double expected_max = 9.f;
+	double expected_avr = 4.5f;
 
 	fillarray(test_array, 10);
 	printf("-------Testing array stats----------\n");
@@ -83,24 +80,22 @@ void testarrstats()
 int main(void)
 {
 	//testarrstats();
-
 	double num_array[ARRAY_SIZE];
-	
-	printf("Please enter up to %d double floats\n", ARRAY_SIZE);
 
-	/*int input_idx = 0;
-	while( scanf("%lf...", num_array) )
-	{
-		printf("blue\n");
+	int input_idx = 0;
+	double input = 0.f;
+
+	printf("Please enter up to %d double floats. Type q when you are done\n", ARRAY_SIZE);
+
+	while( scanf("%lf", &input) ) {
+		num_array[input_idx] = input;
 		input_idx++;
+
 		if(input_idx >= ARRAY_SIZE)
 			break;
 	}
-	*/
-	scanf("%lf", num_array);
-	for(int i=0; i < ARRAY_SIZE; i++)
-		printf("[%d] = %lf\n", i, num_array[i]);
-	arrstats(num_array, ARRAY_SIZE);
+
+	arrstats(num_array, input_idx);
 
 	return 0;
 }
